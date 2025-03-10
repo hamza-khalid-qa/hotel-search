@@ -13,4 +13,4 @@ jobs:
       - name: Get flutter packages
         run: flutter pub get
       - name: Run all tests
-        run: flutter test integration_test
+        run: flutter test integration_test -d macos
