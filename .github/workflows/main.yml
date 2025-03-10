@@ -12,5 +12,9 @@ jobs:
       - uses: subosito/flutter-action@v2
       - name: Get flutter packages
         run: flutter pub get
-      - name: Run all tests
-        run: flutter test integration_test -d macos
+      - name: Build iOS app
+        run: flutter build ios --debug --no-codesign
+      - uses: futureware-tech/simulator-action@v1
+        with:
+          model: "iPhone 13"
+      - run: flutter test integration_test/house_integration_test.dart
