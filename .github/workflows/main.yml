@@ -1,0 +1,11 @@
+name: Running CI for hotel search
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-integration-tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
