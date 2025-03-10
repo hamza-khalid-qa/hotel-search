@@ -17,4 +17,4 @@ jobs:
       - uses: futureware-tech/simulator-action@v1
         with:
           model: "iPhone 13"
-      - run: flutter test integration_test/house_integration_test.dart
+      - run: flutter test integration_test
