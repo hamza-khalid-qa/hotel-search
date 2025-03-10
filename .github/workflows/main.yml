@@ -6,15 +6,23 @@ on:
 
 jobs:
   run-integration-tests:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
       - name: Get flutter packages
         run: flutter pub get
-      - name: Build iOS app
-        run: flutter build ios --debug --no-codesign
-      - uses: futureware-tech/simulator-action@v1
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          model: "iPhone 13"
-      - run: flutter test integration_test
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_3a
+          avd-name: test-emulator
+          disable-animations: true
+          script: echo "Emulator started"
+      - name: Run integration tests
+        run: flutter test integration_test -d emulator-5554
