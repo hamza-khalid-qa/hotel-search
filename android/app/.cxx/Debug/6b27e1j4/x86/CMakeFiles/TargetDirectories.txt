@@ -1,0 +1,2 @@
+D:/hotel-search/android/app/.cxx/Debug/6b27e1j4/x86/CMakeFiles/edit_cache.dir
+D:/hotel-search/android/app/.cxx/Debug/6b27e1j4/x86/CMakeFiles/rebuild_cache.dir
