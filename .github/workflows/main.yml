@@ -29,7 +29,7 @@ jobs:
           api-level: 35 # Updated to API level 35
           target: google_apis # Target for the emulator
           arch: x86_64 # Architecture
-          profile: Pixel_9 # Updated to Pixel 9 profile
+          profile: pixel_9 # Updated to Pixel 9 profile
           avd-name: test-emulator
           disable-animations: true
           script: echo "Emulator started"
