@@ -26,10 +26,10 @@ jobs:
       - name: Start Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35 # Updated to API level 35
-          target: google_apis # Target for the emulator
-          arch: x86_64 # Architecture
-          profile: pixel_9 # Updated to Pixel 9 profile
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_3
           avd-name: test-emulator
           disable-animations: true
           script: echo "Emulator started"
