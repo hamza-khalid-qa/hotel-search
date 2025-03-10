@@ -8,12 +8,21 @@ jobs:
   run-integration-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
-      - name: Get flutter packages
+          flutter-version: "3.29.0"
+          cache: true
+
+      - name: Get Flutter packages
         run: flutter pub get
+
       - name: Start Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -24,5 +33,6 @@ jobs:
           avd-name: test-emulator
           disable-animations: true
           script: echo "Emulator started"
+
       - name: Run integration tests
         run: flutter test integration_test -d emulator-5554
