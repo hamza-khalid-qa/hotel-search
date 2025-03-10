@@ -17,7 +17,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.29.0"
+          flutter-version: "3.19.0"
           cache: true
 
       - name: Get Flutter packages
@@ -33,6 +33,14 @@ jobs:
           avd-name: test-emulator
           disable-animations: true
           script: echo "Emulator started"
+
+      - name: Wait for Emulator to Boot
+        run: |
+          adb wait-for-device shell 'while [[ "$(getprop sys.boot_completed)" != "1" ]]; do sleep 1; done'
+          adb devices
+
+      - name: Grant Permissions
+        run: adb shell pm grant com.example.yourapp android.permission.WRITE_EXTERNAL_STORAGE
 
       - name: Run integration tests
         run: flutter test integration_test -d emulator-5554
