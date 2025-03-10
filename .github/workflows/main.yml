@@ -9,3 +9,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - user: subosito/flutter-action@v2
+      - name: Get flutter packages
+        run: flutter pub get
+      - name: Run all tests
+        run: flutter test integration_test
